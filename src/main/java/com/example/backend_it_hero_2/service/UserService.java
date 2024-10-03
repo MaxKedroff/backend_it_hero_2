@@ -1,7 +1,8 @@
-package com.example.backend_it_hero_2.repository;
+package com.example.backend_it_hero_2.service;
 
 import com.example.backend_it_hero_2.entity.Role;
 import com.example.backend_it_hero_2.entity.User;
+import com.example.backend_it_hero_2.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

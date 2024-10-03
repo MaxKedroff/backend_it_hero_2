@@ -50,7 +50,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return  http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/auth/**").permitAll().requestMatchers("api/auth/welcome").permitAll() //вход без авторизации
+                .authorizeHttpRequests(auth -> auth.requestMatchers("api/auth/**").permitAll().requestMatchers("api/auth/welcome").permitAll().requestMatchers("api/auth/login").permitAll() //вход без авторизации
                 ) //с авторизацией и аутентификацией
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();

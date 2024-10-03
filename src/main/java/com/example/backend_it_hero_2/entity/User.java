@@ -20,6 +20,21 @@ public class User {
 
     private String password;
 
+    public Set<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Events> events) {
+        this.events = events;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_events",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "events_id")
+    )
+    private Set<Events> events;
 
     private String verificationCode;
 
