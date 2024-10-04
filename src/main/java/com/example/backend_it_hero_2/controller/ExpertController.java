@@ -25,7 +25,7 @@ public class ExpertController {
         this.userService = userService;
     }
 
-    @PostMapping("experts")
+    @PostMapping("")
     public ResponseEntity<User> addExpert(@RequestBody User expert) {
         User newExpert = userService.addExpert(expert);
         return new ResponseEntity<>(newExpert, HttpStatus.CREATED);
@@ -35,5 +35,11 @@ public class ExpertController {
     public ResponseEntity<List<User>> getAllExperts() {
         List<User> experts = userService.getAllExperts();
         return new ResponseEntity<>(experts, HttpStatus.OK);
+    }
+    @GetMapping("/experts")
+    public ResponseEntity<List<String>> getExpertParams(@RequestBody User expert){
+
+        List<String> expertParams = userService.getExpertParams(expert);
+        return new ResponseEntity<>(expertParams, HttpStatus.OK);
     }
 }

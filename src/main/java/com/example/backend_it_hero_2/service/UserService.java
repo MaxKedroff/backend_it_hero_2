@@ -7,6 +7,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -101,6 +103,18 @@ public class UserService {
 
     public List<User> getAllExperts() {
         return userRepository.findAll();
+    }
+    public List<String> getExpertParams(User expert) {
+        Long userId = expert.getId();
+        List<String> expertParameters = new ArrayList<>();
+        expertParameters.add("ID: " + expert.getId());
+        expertParameters.add("Name: " + expert.getName());
+        expertParameters.add("Email: " + expert.getEmail());
+        expertParameters.add("Event: " + expert.getEvents());
+        expertParameters.add("Roles: " + expert.getRoles().toString());
+
+
+        return expertParameters;
     }
 
 
