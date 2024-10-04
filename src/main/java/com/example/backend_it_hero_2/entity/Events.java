@@ -32,6 +32,12 @@ public class Events {
     @ManyToMany(mappedBy = "events")
     private Set<User> users = new HashSet<>();
 
+    @OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Criteria> criteria = new HashSet<>();
+
+//    @OneToMany(mappedBy = "events", cascade = CascadeType.ALL)
+//    private Set<Criteria> criteria;
+
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }

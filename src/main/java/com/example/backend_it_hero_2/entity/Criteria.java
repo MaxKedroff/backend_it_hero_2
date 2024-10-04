@@ -9,6 +9,16 @@ public class Criteria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long criteriaId;
 
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "event_id")
+//    private Events event;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
+    private Events events;
+
     public String getCriteriaName() {
         return criteriaName;
     }
