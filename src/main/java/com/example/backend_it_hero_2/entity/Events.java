@@ -35,8 +35,15 @@ public class Events {
     @OneToMany(mappedBy = "events", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Criteria> criteria = new HashSet<>();
 
-//    @OneToMany(mappedBy = "events", cascade = CascadeType.ALL)
-//    private Set<Criteria> criteria;
+
+
+    public Set<Criteria> getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(Set<Criteria> criteria) {
+        this.criteria = criteria;
+    }
 
     public void setRoomId(Long roomId) {
         this.roomId = roomId;

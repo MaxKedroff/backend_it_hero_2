@@ -4,6 +4,9 @@ import com.example.backend_it_hero_2.entity.Events;
 import com.example.backend_it_hero_2.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,5 +35,9 @@ public class EventsService {
     public void deleteEvent(Long id){
         eventRepository.deleteById(id);
     }
+    public boolean addExpertToRoom(Long roomId,  Long expertId){
+        return false;
+    }
+
 
 }

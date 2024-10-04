@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
+@CrossOrigin(origins = "*")
 @AllArgsConstructor
 public class AuthController {
 
@@ -35,6 +36,8 @@ public class AuthController {
     public ResponseEntity<String> welcome(){
         return ResponseEntity.ok("вы успешно используете backend");
     }
+
+
     @GetMapping("/register")
     public String test() {
         return "форма регистрации тут";

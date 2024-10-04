@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -94,4 +95,13 @@ public class UserService {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("User not found"));
         return user.isActive();
     }
+    public User addExpert(User expert) {
+        return userRepository.save(expert);
+    }
+
+    public List<User> getAllExperts() {
+        return userRepository.findAll();
+    }
+
+
 }

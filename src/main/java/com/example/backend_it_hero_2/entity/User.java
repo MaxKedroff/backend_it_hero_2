@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -35,6 +36,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "events_id")
     )
     private Set<Events> events;
+
+
 
     private String verificationCode;
 
