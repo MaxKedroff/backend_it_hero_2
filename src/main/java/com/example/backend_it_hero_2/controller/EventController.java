@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
@@ -17,6 +19,14 @@ public class EventController {
     @PostMapping("/create")
     public Events createEvent(@RequestBody Events events){
         return eventService.createNewEvent(events);
+    }
+    @GetMapping("/")
+    public List<Events> getAllEvents(){
+        return eventService.getAllEvents();
+    }
+    @GetMapping("/{roomId}")
+    public Events getEventById(@RequestParam Long roomId){
+        return eventService.getEventById(roomId).get();
     }
 
     @PostMapping("/{roomId}/add_expert")
