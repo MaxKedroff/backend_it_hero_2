@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "8090:8090"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_db:3306/task_manager
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=vfrcbv2005
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      - MYSQL_DATABASE=task_manager
+      - MYSQL_ROOT_PASSWORD=vfrcbv2005
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=12345
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
