@@ -22,13 +22,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class SecurityConfig {
 
 
 
     private final MyUserDetailService userDetailService;
 
+    @Autowired
     public SecurityConfig(MyUserDetailService userDetailService) {
         this.userDetailService = userDetailService;
     }
