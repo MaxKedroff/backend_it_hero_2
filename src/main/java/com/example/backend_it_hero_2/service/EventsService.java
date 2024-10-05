@@ -2,6 +2,7 @@ package com.example.backend_it_hero_2.service;
 
 import com.example.backend_it_hero_2.entity.Events;
 import com.example.backend_it_hero_2.repository.EventRepository;
+import com.example.backend_it_hero_2.tools.QRCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,4 +44,12 @@ public class EventsService {
         String baseUrl = "https://exciting-presence-production.up.railway.app/api/rooms/join";
         return baseUrl + "?roomId=" + roomId + "&expertId=" + expertId;
     }
+
+    public void generateQRCodeForLink(Long roomId, Long expertId) throws Exception {
+        String link = generateExpertLink(roomId, expertId);
+        String filePath = "qr_codes/room_" + roomId + "_expert_" + expertId + ".png";
+
+        QRCodeGenerator.generateQRCode(link, filePath, 300, 300);
+    }
+
 }

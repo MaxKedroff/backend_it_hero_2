@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/experts")
+@CrossOrigin(origins = "*")
 
 public class ExpertController {
     private UserService userService;

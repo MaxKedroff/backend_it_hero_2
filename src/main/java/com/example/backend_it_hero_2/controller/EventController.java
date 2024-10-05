@@ -4,6 +4,7 @@ import com.example.backend_it_hero_2.entity.Events;
 import com.example.backend_it_hero_2.service.EventsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
+@CrossOrigin(origins = "*")
 public class EventController {
 
     @Autowired
@@ -24,6 +26,18 @@ public class EventController {
     public List<Events> getAllEvents(){
         return eventService.getAllEvents();
     }
+    @PostMapping("/{roomId}/generate-qr")
+    public ResponseEntity<String> generateQRCode(@PathVariable Long roomId, @RequestBody Long expertId) {
+        try {
+            eventService.generateQRCodeForLink(roomId, expertId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ошибка при генерации QR-кода.");
+        }
+    }
+//    @GetMapping("/events")
+//    public ResponseEntity<String>
+
 
     @PostMapping("/{roomId}/generate-link")
     public ResponseEntity<String> generateExpertLink(@PathVariable Long roomId, @RequestBody Long expertId) {
