@@ -26,8 +26,8 @@ public class EventsService {
     public List<Events> getAllEvents(){
         return eventRepository.findAll();
     }
-    public Optional<Events> getEventById(Long id){
-        return eventRepository.findById(id);
+    public Events getEventById(Long id){
+        return eventRepository.findByRoomId(id);
     }
     public void updateEvent(Events events){
         eventRepository.save(events);

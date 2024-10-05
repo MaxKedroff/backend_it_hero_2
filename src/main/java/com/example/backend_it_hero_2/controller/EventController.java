@@ -22,10 +22,7 @@ public class EventController {
     public Events createEvent(@RequestBody Events events){
         return eventService.createNewEvent(events);
     }
-    @GetMapping("/")
-    public List<Events> getAllEvents(){
-        return eventService.getAllEvents();
-    }
+
     @PostMapping("/{roomId}/generate-qr")
     public ResponseEntity<String> generateQRCode(@PathVariable Long roomId, @RequestBody Long expertId) {
         try {
@@ -46,8 +43,12 @@ public class EventController {
     }
 
     @GetMapping("/{roomId}")
-    public Events getEventById(@RequestParam Long roomId){
-        return eventService.getEventById(roomId).get();
+    public Events getEventById(@PathVariable Long roomId){
+        return eventService.getEventById(roomId);
+    }
+    @GetMapping("/")
+    public List<Events> getAllEvents(){
+        return eventService.getAllEvents();
     }
 
     @PostMapping("/{roomId}/add_expert")
