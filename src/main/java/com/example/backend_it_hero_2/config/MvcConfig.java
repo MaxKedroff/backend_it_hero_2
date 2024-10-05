@@ -6,18 +6,15 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-//
-//public class MvcConfig implements WebMvcConfigurer {
-//    public void addViewControllers(ViewControllerRegistry registry)
-//    {
-////        registry.addViewController("/api/auth/login").setViewName("login");
-////        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-//    }
-////    public void addCorsMappings(CorsRegistry registry){
-////        registry.addMapping("/**")
-////                .allowedOrigins("http://172.17.64.1:3000")
-////                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-////                .allowedHeaders("*")
-////                .allowCredentials(true);
-////    }
-//}
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry){
+        registry.addMapping("/**")
+                .allowedOrigins("localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
+}
