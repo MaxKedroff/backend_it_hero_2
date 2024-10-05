@@ -39,5 +39,8 @@ public class EventsService {
         return false;
     }
 
-
+    public String generateExpertLink(Long roomId, Long expertId) {
+        String baseUrl = "https://exciting-presence-production.up.railway.app/api/rooms/join";
+        return baseUrl + "?roomId=" + roomId + "&expertId=" + expertId;
+    }
 }

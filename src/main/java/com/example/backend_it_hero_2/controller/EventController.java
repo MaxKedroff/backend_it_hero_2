@@ -24,6 +24,13 @@ public class EventController {
     public List<Events> getAllEvents(){
         return eventService.getAllEvents();
     }
+
+    @PostMapping("/{roomId}/generate-link")
+    public ResponseEntity<String> generateExpertLink(@PathVariable Long roomId, @RequestBody Long expertId) {
+        String link = eventService.generateExpertLink(roomId, expertId);
+        return ResponseEntity.ok(link);
+    }
+
     @GetMapping("/{roomId}")
     public Events getEventById(@RequestParam Long roomId){
         return eventService.getEventById(roomId).get();
